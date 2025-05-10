@@ -4,116 +4,82 @@ Welcome to my home lab project — a fully segmented, monitored, and secure netw
 
 ---
 
-## 🚩 Project Goals
+## 📊 Dashboard Overview
+
+![UniFi Dashboard](screenshots/Dashboard.png)
+
+---
+
+## 🌟 Project Goals
 
 - 🧱 Learn and apply real-world VLAN segmentation
 - 🔐 Secure access using WireGuard + DDNS
 - 📊 Monitor network and server activity with Grafana + InfluxDB
-- 🔁 Back up and restore with Proxmox Backup Server
+- 📆 Back up and restore with Proxmox Backup Server
 - 🧰 Document infrastructure like a real system admin
 
 ---
 
-## 📂 Folder Structure
+## 📂 Repository Structure
 
-📁 unifi-network-lab/
+```
+unifi-network-lab/
 ├── README.md
-├── 📁 configs/
-│ ├── vlan_plan.md
-│ ├── firewall_rules.md
-│ └── vpn_config.md
-├── 📁 automation/
-│ └── wireguard_ddns_sop.md
-├── 📁 monitoring/
-│ ├── unifi_poller_setup.md
-│ ├── influxdb_setup.md
-│ └── grafana_dashboards.json
-├── 📁 backup_and_restore/
-│ ├── proxmox_pbs_guide.md
-│ └── restore_from_crash.md
+├── /configs/
+│   ├── vlan_plan.md
+│   ├── firewall_rules.md
+│   ├── vpn_config.md
+│   ├── ddns_config.md
+│   ├── network_vlan_config.md
+│   ├── wifi_config.md
+│   └── internet_wan_config.md
+├── /automation/
+│   └── wireguard_ddns_sop.md
+├── /monitoring/
+│   ├── unifi_poller_setup.md
+│   ├── influxdb_setup.md
+│   └── grafana_dashboards.json
+├── /backup_and_restore/
+│   ├── proxmox_pbs_guide.md
+│   └── restore_from_crash.md
+├── /screenshots/
 └── LICENSE
-
-yaml
-Copy
-Edit
+```
 
 ---
 
-## 🧱 Network Layout
+## 🌐 Core Config Files
 
-### 🔹 VLANs
-
-| Name        | VLAN ID | Purpose                           |
-|-------------|---------|-----------------------------------|
-| management  | 1       | UniFi Controller, switches, APs   |
-| homewan     | 10      | Personal devices (TVs, phones)    |
-| homeguest   | 20      | Internet-only guest devices       |
-| homeIOT     | 30      | Smart home devices (Echo, TVs)    |
-| homeIOTld   | 40      | Locked-down IoT                   |
-| homeserver  | 86      | Proxmox, PBS, File servers        |
-
-📑 Full VLAN logic: [configs/vlan_plan.md](./configs/vlan_plan.md)
+| Area                | Doc Link                                             |
+|---------------------|------------------------------------------------------|
+| VLAN Segmentation   | [vlan_plan.md](configs/vlan_plan.md)                 |
+| Firewall Rules      | [firewall_rules.md](configs/firewall_rules.md)       |
+| VPN Configuration   | [vpn_config.md](configs/vpn_config.md)               |
+| DDNS Setup          | [ddns_config.md](configs/ddns_config.md)             |
+| Network & VLAN Info | [network_vlan_config.md](configs/network_vlan_config.md) |
+| WiFi Settings       | [wifi_config.md](configs/wifi_config.md)             |
+| WAN/Internet Config | [internet_wan_config.md](configs/internet_wan_config.md) |
 
 ---
 
-### 🔹 WiFi Networks (SSID → VLAN)
+## 📸 Topology & Screenshots
 
-| SSID        | VLAN       | Devices          | Notes                        |
-|-------------|------------|------------------|------------------------------|
-| Home WAN    | VLAN 10    | All personal use | mDNS enabled for casting     |
-| Ping        | VLAN 20    | Guest phones     | Isolated, no LAN access      |
-| IoT_Hive    | VLAN 30    | Echo, cameras    | mDNS allowed only            |
-
----
-
-## 🔐 Firewall Logic
-
-| Source VLAN  | Destination | Action | Description                              |
-|--------------|-------------|--------|------------------------------------------|
-| homeIOT      | Any         | ❌     | Blocks IoT from accessing LAN            |
-| homewan      | homeserver  | ✅     | Allows RDP/SMB access                    |
-| VPN          | homeserver  | ✅     | Access to Proxmox from anywhere          |
-| VPN          | UDM GUI     | ❌     | Remote GUI/SSH access blocked            |
-
-📑 Full firewall rules: [configs/firewall_rules.md](./configs/firewall_rules.md)
-
----
-
-## 🌐 VPN & Remote Access
-
-- WireGuard VPN runs on a Debian VM inside VLAN 86
-- Clients routed only to `homeserver` VLAN (172.27.27.x)
-- DDNS powered by DuckDNS
-
-📑 Setup steps: [automation/wireguard_ddns_sop.md](./automation/wireguard_ddns_sop.md)
-
----
-
-## 📊 Monitoring Stack
-
-| Tool         | Function                  |
-|--------------|---------------------------|
-| Grafana      | Dashboards & visualization|
-| InfluxDB     | Stores UniFi + Proxmox data|
-| UniFi Poller | Pulls stats from UDM Pro SE|
-
-📑 Setup guides in `/monitoring/`
-
----
-
-## 💾 Backups
-
-- Full VM backups handled by **Proxmox Backup Server**
-- Restore procedures tested from disk-level crashes
-
-📑 Restore SOP: [backup_and_restore/restore_from_crash.md](./backup_and_restore/restore_from_crash.md)
+| Type                   | Preview                                  |
+|------------------------|------------------------------------------|
+| Full Network Topology | ![Topology](screenshots/topology.png)    |
+| WireGuard Server Config | ![VPN Server](screenshots/VPN-server.png) |
+| DDNS Settings (DuckDNS) | ![DDNS Config](screenshots/ddnssetup.png) |
+| Firewall Rules Overview | ![Firewall](screenshots/firewall.png)     |
+| VLAN & Network Table    | ![Network](screenshots/network.png)       |
+| WiFi Configurations     | ![WiFi](screenshots/wifi.png)             |
+| WAN Internet Config     | ![Internet](screenshots/Internet.png)     |
 
 ---
 
 ## ✍️ Author
 
 **Allfin Ahsan**  
-System Administrator | Cybersecurity Learner  
-Documenting everything I build, so I can learn deeper and help others do the same.
+System Administrator & Cybersecurity Learner  
+Documenting my infrastructure one repo at a time 🛠️
 
 ---
