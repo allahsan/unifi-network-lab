@@ -16,4 +16,4 @@ This document outlines the exact DDNS configuration used on the UDM Pro SE (UniF
 
 
 ```plaintext
-www.duckdns.org/update?domains=%h&token=%p&ip=%a
+www.duckdns.org/update?domains=%h&token=%p&ip=%i
