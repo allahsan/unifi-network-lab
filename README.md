@@ -26,7 +26,6 @@ Welcome to my home lab project — a fully segmented, monitored, and secure netw
 unifi-network-lab/
 ├── README.md
 ├── /configs/
-│   ├── vlan_plan.md
 │   ├── firewall_rules.md
 │   ├── vpn_config.md
 │   ├── ddns_config.md
@@ -52,7 +51,6 @@ unifi-network-lab/
 
 | Area                | Doc Link                                             |
 |---------------------|------------------------------------------------------|
-| VLAN Segmentation   | [vlan_plan.md](configs/vlan_plan.md)                 |
 | Firewall Rules      | [firewall_rules.md](configs/firewall_rules.md)       |
 | VPN Configuration   | [vpn_config.md](configs/vpn_config.md)               |
 | DDNS Setup          | [ddns_config.md](configs/ddns_config.md)             |
