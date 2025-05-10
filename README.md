@@ -34,7 +34,7 @@ unifi-network-lab/
 │   └── internet_wan_config.md
 ├── /automation/
 │   └── wireguard_ddns_sop.md
-├── /monitoring/
+├── /monitoring/ (In Progress)
 │   ├── unifi_poller_setup.md
 │   ├── influxdb_setup.md
 │   └── grafana_dashboards.json
