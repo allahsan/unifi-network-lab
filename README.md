@@ -38,9 +38,6 @@ unifi-network-lab/
 │   ├── unifi_poller_setup.md
 │   ├── influxdb_setup.md
 │   └── grafana_dashboards.json
-├── /backup_and_restore/
-│   ├── proxmox_pbs_guide.md
-│   └── restore_from_crash.md
 ├── /screenshots/
 └── LICENSE
 ```
